@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.StudentDao">
+<cache readOnly="true" eviction="FIFO"></cache>
+	<resultMap type="Student" id="stu">
+		
+		<association property="grade" column="gradeid" select="selectGrade" javaType="entity.Grade"></association>
+	</resultMap>
+	<resultMap type="Student" id="stu1">
+				<id column="studentno" property="studentNo"/>
+				<result column="studentname" property="studentName"/>
+	</resultMap>
+	<select id="selectGrade" resultType="entity.Grade">
+		                   select * from grade where gradeid=#{gradeid}
+	</select>
+	<select id="getAllStudent" resultType="Student">
+		select  * from student
+	</select>
+	<select id="findStudentById" resultMap="stu">
+		select  * from student where studentno=#{id}
+	</select>
+	<insert id="addStudent" parameterType="Student">
+		INSERT INTO student(LoginPwd,StudentName,sex)
+		VALUES(#{loginpwd},#{studentName},#{sex})
+	</insert>
+	
+	<delete id="deleteStudentById">
+		delete from student where studentno=#{id}
+	</delete>
+	
+	<update id="updateStudent" parameterType="Student">
+		update student set sex=#{sex},loginpwd=#{loginpwd} where studentno=#{studentNo}
+	</update>
+</mapper>

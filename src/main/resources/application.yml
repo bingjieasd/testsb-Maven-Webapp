@@ -1,0 +1,46 @@
+server:
+  port: 8081
+
+##属性文件配置方法1：
+#name: admin
+#age: 10
+##配置数据库
+##属性文件配置方法2：
+#gril:
+#  name: admin
+#  age: 10
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/myshcool?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123
+  #显示sql日志logging.level.com.Mapper包=日志等级
+
+#ddl-auto:
+ #create 表示程序每次运行都会把原来的表删除重新再创建表。
+ #update 程序运行也会把原来的表删除重建，但是会保留原来表里面的数据。
+#  jpa:
+                   #    hibernate:
+                   #      ddl-auto: update
+                   #    show-sql: true
+#  thymeleaf:
+#    prefix: /templates/
+#    suffix: .html
+#  mvc:
+#    view:
+#      prefix: /templates/
+#      suffix: .html
+#
+#  view:
+#    prefix: /templates/
+#    suffix: .jsp
+
+mybatis:
+  type-aliases-package: entity
+  mapper-locations:
+    - dao/GradeDao.xml
+    - dao/StudentDao.xml
+   
+    
+
