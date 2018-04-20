@@ -14,6 +14,7 @@ public class RunStart extends SpringBootServletInitializer{
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(RunStart.class);
 	}
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(RunStart.class, args);
