@@ -6,8 +6,14 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-@ComponentScan(basePackages={"controller","biz"})
+import org.springframework.core.convert.converter.Converter;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+@ComponentScan(basePackages={"controller","biz","tool"})
 @MapperScan(basePackages={"dao"})
 @SpringBootApplication
 public class RunStart extends SpringBootServletInitializer{
@@ -22,4 +28,20 @@ public class RunStart extends SpringBootServletInitializer{
 
 	}
 
+	@Bean
+    public Converter<String, Date> addNewConvert() {
+        return new Converter<String, Date>() {
+            @Override
+            public Date convert(String source) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                 Date date = null;
+            try {
+                date = sdf.parse((String) source);
+                } catch (Exception e) {
+                e.printStackTrace();
+                }
+             return date;
+            }
+        };
+    }
 }

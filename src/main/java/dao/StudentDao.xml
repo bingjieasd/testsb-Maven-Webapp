@@ -22,8 +22,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select  * from student where studentno=#{id}
 	</select>
 	<insert id="addStudent" parameterType="Student">
-		INSERT INTO student(LoginPwd,StudentName,sex)
-		VALUES(#{loginpwd},#{studentName},#{sex})
+		INSERT INTO student(LoginPwd,StudentName,sex,borndate)
+		VALUES(#{loginpwd},#{studentName},#{sex},#{borndate})
 	</insert>
 	
 	<delete id="deleteStudentById">

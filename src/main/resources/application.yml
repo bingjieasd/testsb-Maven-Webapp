@@ -1,5 +1,3 @@
-server:
-  port: 8081
 
 ##属性文件配置方法1：
 #name: admin
@@ -36,11 +34,13 @@ spring:
 #    prefix: /templates/
 #    suffix: .jsp
 
-mybatis:
-  type-aliases-package: entity
-  mapper-locations:
-    - dao/GradeDao.xml
-    - dao/StudentDao.xml
+#mybatis:
+#  type-aliases-package: entity
+#  mapper-locations:
+#    - dao/GradeDao.xml
+#    - dao/StudentDao.xml
+
    
-    
+mybatis:
+  config-location: classpath:mybatis-config.xml
 

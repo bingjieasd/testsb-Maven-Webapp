@@ -19,7 +19,7 @@ import dao.StudentDao;
 import entity.Student;
 import biz.StudentBiz;
 @Transactional
-@Service
+@Service("studentBiz")
 public class StudentBizImpl implements StudentBiz {
 	static Logger log=Logger.getLogger(StudentBizImpl.class);
 	@Resource
